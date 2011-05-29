@@ -1,4 +1,6 @@
 UrlShorten::Application.routes.draw do
+  resources :shorteners
+
   get "home/index"
 
   root :to => "home#index"

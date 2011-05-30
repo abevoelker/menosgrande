@@ -40,4 +40,10 @@ describe Shortener do
     shortener_with_duplicate_url.should_not be_valid
   end
 
+  it "should reject duplicate keys" do
+    # Put a shortener with given key into the database.
+    Shortener.create!(@attr)
+    shortener_with_duplicate_key = Shortener.new(@attr)
+    shortener_with_duplicate_key.should_not be_valid
+  end
 end

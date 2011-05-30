@@ -1,13 +1,12 @@
 UrlShorten::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
+  # Redis config info
+  ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
+
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
   # since you don't have to restart the webserver when you make code changes.
-  
-  # Redis config info
-  ENV["REDISTOGO_URL"] = 'redis://redistogo:5f3174906568d6812cd56ba78e1839d4@bluegill.redistogo.com:9179/'
-
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.

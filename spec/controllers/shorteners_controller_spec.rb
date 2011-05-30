@@ -20,138 +20,52 @@ require 'spec_helper'
 
 describe ShortenersController do
 
-  # This should return the minimal set of attributes required to create a valid
-  # Shortener. As you add validations to Shortener, be sure to
-  # update the return value of this method accordingly.
-  def valid_attributes
-    {}
-  end
-
-  describe "GET index" do
-    it "assigns all shorteners as @shorteners" do
-      shortener = Shortener.create! valid_attributes
-      get :index
-      assigns(:shorteners).should eq([shortener])
-    end
-  end
+  render_views
 
   describe "GET show" do
-    it "assigns the requested shortener as @shortener" do
-      shortener = Shortener.create! valid_attributes
-      get :show, :id => shortener.id.to_s
-      assigns(:shortener).should eq(shortener)
+
+    before(:each) do
+      @shortener = Factory(:shortener)
+    end
+
+    it "should be successful" do
+      get :show, :id => @shortener
+      response.should be_success
+    end
+
+    it "should find the right shortener" do
+      get :show, :id => @shortener
+      assigns(:shortener).should == @shortener
     end
   end
 
-  describe "GET new" do
-    it "assigns a new shortener as @shortener" do
-      get :new
-      assigns(:shortener).should be_a_new(Shortener)
-    end
-  end
+  describe "POST 'create'" do
 
-  describe "GET edit" do
-    it "assigns the requested shortener as @shortener" do
-      shortener = Shortener.create! valid_attributes
-      get :edit, :id => shortener.id.to_s
-      assigns(:shortener).should eq(shortener)
-    end
-  end
+    describe "failure" do
 
-  describe "POST create" do
-    describe "with valid params" do
-      it "creates a new Shortener" do
-        expect {
-          post :create, :shortener => valid_attributes
-        }.to change(Shortener, :count).by(1)
+      before(:each) do
+        @attr = { :url => "", :key => "" }
       end
 
-      it "assigns a newly created shortener as @shortener" do
-        post :create, :shortener => valid_attributes
-        assigns(:shortener).should be_a(Shortener)
-        assigns(:shortener).should be_persisted
+      it "should not create a shortener" do
+        lambda do
+          post :create, :shortener => @attr
+        end.should_not change(Shortener, :count)
       end
 
-      it "redirects to the created shortener" do
-        post :create, :shortener => valid_attributes
-        response.should redirect_to(Shortener.last)
-      end
     end
 
-    describe "with invalid params" do
-      it "assigns a newly created but unsaved shortener as @shortener" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Shortener.any_instance.stub(:save).and_return(false)
-        post :create, :shortener => {}
-        assigns(:shortener).should be_a_new(Shortener)
+    describe "success" do
+
+      before(:each) do
+        @attr = { :url => "http://www.abevoelker.com", :key => "b" }
       end
 
-      it "re-renders the 'new' template" do
-        # Trigger the behavior that occurs when invalid params are submitted
-        Shortener.any_instance.stub(:save).and_return(false)
-        post :create, :shortener => {}
-        response.should render_template("new")
+      it "should create a shortener" do
+        lambda do
+          post :create, :shortener => @attr
+        end.should change(Shortener, :count).by(1)
       end
     end
   end
-
-  describe "PUT update" do
-    describe "with valid params" do
-      it "updates the requested shortener" do
-        shortener = Shortener.create! valid_attributes
-        # Assuming there are no other shorteners in the database, this
-        # specifies that the Shortener created on the previous line
-        # receives the :update_attributes message with whatever params are
-        # submitted in the request.
-        Shortener.any_instance.should_receive(:update_attributes).with({'these' => 'params'})
-        put :update, :id => shortener.id, :shortener => {'these' => 'params'}
-      end
-
-      it "assigns the requested shortener as @shortener" do
-        shortener = Shortener.create! valid_attributes
-        put :update, :id => shortener.id, :shortener => valid_attributes
-        assigns(:shortener).should eq(shortener)
-      end
-
-      it "redirects to the shortener" do
-        shortener = Shortener.create! valid_attributes
-        put :update, :id => shortener.id, :shortener => valid_attributes
-        response.should redirect_to(shortener)
-      end
-    end
-
-    describe "with invalid params" do
-      it "assigns the shortener as @shortener" do
-        shortener = Shortener.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Shortener.any_instance.stub(:save).and_return(false)
-        put :update, :id => shortener.id.to_s, :shortener => {}
-        assigns(:shortener).should eq(shortener)
-      end
-
-      it "re-renders the 'edit' template" do
-        shortener = Shortener.create! valid_attributes
-        # Trigger the behavior that occurs when invalid params are submitted
-        Shortener.any_instance.stub(:save).and_return(false)
-        put :update, :id => shortener.id.to_s, :shortener => {}
-        response.should render_template("edit")
-      end
-    end
-  end
-
-  describe "DELETE destroy" do
-    it "destroys the requested shortener" do
-      shortener = Shortener.create! valid_attributes
-      expect {
-        delete :destroy, :id => shortener.id.to_s
-      }.to change(Shortener, :count).by(-1)
-    end
-
-    it "redirects to the shorteners list" do
-      shortener = Shortener.create! valid_attributes
-      delete :destroy, :id => shortener.id.to_s
-      response.should redirect_to(shorteners_url)
-    end
-  end
-
 end

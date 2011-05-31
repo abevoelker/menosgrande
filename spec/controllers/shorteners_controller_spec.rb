@@ -28,14 +28,19 @@ describe ShortenersController do
       @shortener = Factory(:shortener)
     end
 
-    it "should be successful" do
-      get :show, :id => @shortener
-      response.should be_success
-    end
-
     it "should find the right shortener" do
       get :show, :id => @shortener
       assigns(:shortener).should == @shortener
+    end
+
+    it "should be a redirect" do
+      get :show, :id => @shortener
+      response.should be_redirect
+    end
+
+    it "should redirect to the shortened url" do
+      get :show, :id => @shortener
+      response.should redirect_to(@shortener.url)
     end
   end
 
@@ -44,7 +49,7 @@ describe ShortenersController do
     describe "failure" do
 
       before(:each) do
-        @attr = { :url => "", :key => "" }
+        @attr = { :url => "" }
       end
 
       it "should not create a shortener" do
@@ -58,7 +63,7 @@ describe ShortenersController do
     describe "success" do
 
       before(:each) do
-        @attr = { :url => "http://www.abevoelker.com", :key => "b" }
+        @attr = { :url => "http://www.abevoelker.com" }
       end
 
       it "should create a shortener" do

@@ -3,8 +3,7 @@ require 'spec_helper'
 describe Shortener do
 
   before(:each) do
-    @attr = { :url => "http://www.google.com",
-              :key => "a" }
+    @attr = { :url => "http://www.google.com" }
   end
 
   it "should create a new instance given valid attributes" do
@@ -46,4 +45,5 @@ describe Shortener do
     shortener_with_duplicate_key = Shortener.new(@attr)
     shortener_with_duplicate_key.should_not be_valid
   end
+
 end

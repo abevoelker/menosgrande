@@ -11,14 +11,9 @@ class ShortenersController < ApplicationController
   end
 
   # GET /shorteners/1
-  # GET /shorteners/1.xml
   def show
-    @shortener = Shortener.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @shortener }
-    end
+    @shortener = Shortener.find_by_key(params[:key])
+    redirect_to @shortener.url, :status => 301
   end
 
   # GET /shorteners/new

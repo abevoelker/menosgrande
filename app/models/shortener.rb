@@ -13,6 +13,6 @@ class Shortener < ActiveRecord::Base
     end
 
     def get_next_key
-      [Redis.new.incr('key').to_i].pack("U*").mb_chars
+      [REDIS.incr('key').to_i].pack("U*").mb_chars
     end
 end

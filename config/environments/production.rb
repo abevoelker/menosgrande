@@ -2,7 +2,7 @@ UrlShorten::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
   # Redis config info
-
+  ENV["REDISTOGO_URL"] = 'redis://redistogo:5f3174906568d6812cd56ba78e1839d4@bluegill.redistogo.com:9179/'
 
   # The production environment is meant for finished, "live" apps.
   # Code is not reloaded between requests

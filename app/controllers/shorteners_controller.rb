@@ -12,7 +12,11 @@ class ShortenersController < ApplicationController
 
   # GET /shorteners/1
   def show
-    @shortener = Shortener.find_by_key(params[:key])
+    if params[:key]
+      @shortener = Shortener.find_by_key(params[:key])
+    else
+      @shortener = Shortener.find(params[:id])
+    end
     redirect_to @shortener.url, :status => 301
   end
 

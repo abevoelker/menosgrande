@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/mihu/idn
+  revision: d15e1b9867ad9b3c72db98fa75db95f33e29fb54
+  specs:
+    idn (0.0.2)
+
 GEM
   remote: http://rubygems.org/
   specs:
@@ -98,6 +104,7 @@ DEPENDENCIES
   addressable (~> 2.2.6)
   annotate-models (~> 1.0.4)
   factory_girl_rails (~> 1.0.1)
+  idn (~> 0.0.2)!
   rails (= 3.0.7)
   rake (= 0.8.7)
   redis (~> 2.2.0)

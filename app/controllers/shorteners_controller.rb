@@ -1,8 +1,10 @@
 # encoding: utf-8
 
+require 'idn'
+
 class ShortenersController < ApplicationController
 
-  before_filter :request_type
+  #before_filter :request_type
 
   # GET /shorteners
   # GET /shorteners.xml
@@ -23,7 +25,7 @@ class ShortenersController < ApplicationController
       @shortener = Shortener.find(params[:id])
     end
 
-    redirect_to @shortener.url, :status => 301 if @forward_request
+    redirect_to @shortener.url, :status => 301 if is_redirect_domain?(request.host)
   end
 
   # GET /shorteners/new
@@ -89,7 +91,9 @@ class ShortenersController < ApplicationController
 
 
   private
-    def request_type
-      @forward_request = request.host == 'æ.is'
+    def is_redirect_domain?(domain)
+      REDIS.SISMEMBER('domains', domain) ||
+        REDIS.SISMEMBER('domains', IDN::Idna.toUnicode(domain))
     end
+
 end

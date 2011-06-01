@@ -92,8 +92,8 @@ class ShortenersController < ApplicationController
 
   private
     def is_redirect_domain?(domain)
-      REDIS.SISMEMBER('domains', domain) ||
-        REDIS.SISMEMBER('domains', IDN::Idna.toUnicode(domain))
+      REDIS.SISMEMBER('domains', domain) == 1 ||
+        REDIS.SISMEMBER('domains', IDN::Idna.toUnicode(domain)) == 1
     end
 
 end

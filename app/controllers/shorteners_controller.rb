@@ -1,4 +1,9 @@
+# encoding: utf-8
+
 class ShortenersController < ApplicationController
+
+  before_filter :request_type
+
   # GET /shorteners
   # GET /shorteners.xml
   def index
@@ -17,7 +22,8 @@ class ShortenersController < ApplicationController
     else
       @shortener = Shortener.find(params[:id])
     end
-    redirect_to @shortener.url, :status => 301
+
+    redirect_to @shortener.url, :status => 301 if @forward_request
   end
 
   # GET /shorteners/new
@@ -79,4 +85,11 @@ class ShortenersController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+
+  private
+    def request_type
+      @forward_request = request.host == 'æ.is'
+    end
 end

@@ -16,5 +16,5 @@ class HttpUriFormatValidator < ActiveModel::EachValidator
         return false
       end
       return true
-    end    
+    end
 end

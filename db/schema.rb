@@ -10,13 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110531173735) do
+ActiveRecord::Schema.define(:version => 20110601022424) do
 
   create_table "shorteners", :force => true do |t|
     t.string   "url"
     t.string   "key"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "domain"
   end
 
   add_index "shorteners", ["key"], :name => "index_shorteners_on_key", :unique => true

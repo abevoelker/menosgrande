@@ -1,3 +1,16 @@
+# == Schema Information
+# Schema version: 20110601022424
+#
+# Table name: shorteners
+#
+#  id         :integer         not null, primary key
+#  url        :string(255)
+#  key        :string(255)
+#  created_at :datetime
+#  updated_at :datetime
+#  domain     :string(255)
+#
+
 require 'redis'
 
 class Shortener < ActiveRecord::Base

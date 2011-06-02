@@ -7,19 +7,8 @@
 
 <p>
   <b>Shortened Link:</b>
-  <a href="<%= shortlink_for @shortener %>"><%= shortlink_for @shortener %></a>
+  <a href="<%= @shortener.shortlink %>"><%= @shortener.shortlink %></a>
 </p>
-
-<p>
-  <b>Domain:</b>
-  <%= @shortener.domain %>
-</p>
-
-<p>
-  <b>Key:</b>
-  <%= @shortener.key %>
-</p>
-
 
 <%= link_to 'Edit', edit_shortener_path(@shortener) %> |
 <%= link_to 'Back', shorteners_path %>

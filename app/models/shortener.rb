@@ -1,7 +1,8 @@
 require 'redis'
 
 class Shortener < ActiveRecord::Base
-  attr_accessible :url, :shortlink
+  attr_reader :domain, :key, :shortlink
+  attr_accessible :url
 
   validates :url, :presence => true, :uniqueness => true, :uri_format => true
 

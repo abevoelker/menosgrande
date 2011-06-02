@@ -34,11 +34,13 @@ describe ShortenersController do
     end
 
     it "should be a redirect" do
+      @request.host = @shortener.read_attribute(:domain)
       get :show, :id => @shortener
       response.should be_redirect
     end
 
     it "should redirect to the shortened url" do
+      @request.host = @shortener.read_attribute(:domain)
       get :show, :id => @shortener
       response.should redirect_to(@shortener.url)
     end

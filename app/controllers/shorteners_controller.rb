@@ -4,8 +4,6 @@ require 'idn'
 
 class ShortenersController < ApplicationController
 
-  #before_filter :request_type
-
   # GET /shorteners
   # GET /shorteners.xml
   def index
@@ -39,11 +37,6 @@ class ShortenersController < ApplicationController
     end
   end
 
-  # GET /shorteners/1/edit
-  def edit
-    @shortener = Shortener.find(params[:id])
-  end
-
   # POST /shorteners
   # POST /shorteners.xml
   def create
@@ -59,35 +52,6 @@ class ShortenersController < ApplicationController
       end
     end
   end
-
-  # PUT /shorteners/1
-  # PUT /shorteners/1.xml
-  def update
-    @shortener = Shortener.find(params[:id])
-
-    respond_to do |format|
-      if @shortener.update_attributes(params[:shortener])
-        format.html { redirect_to(@shortener, :notice => 'Shortener was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @shortener.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /shorteners/1
-  # DELETE /shorteners/1.xml
-  def destroy
-    @shortener = Shortener.find(params[:id])
-    @shortener.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(shorteners_url) }
-      format.xml  { head :ok }
-    end
-  end
-
 
 
   private

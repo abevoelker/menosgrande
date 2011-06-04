@@ -1,4 +1,12 @@
 UrlShorten::Application.routes.draw do
+  get "pages/faq"
+
+  get "pages/api"
+
+  get "pages/home"
+
+  get "pages/contact"
+
   resources :shorteners
 
   get "home/index"

@@ -24,25 +24,36 @@ describe ShortenersController do
 
   describe "GET show" do
 
-    before(:each) do
-      @shortener = Factory(:shortener)
+    describe "failure" do
+
+      it "should show a 404 error for nonexistent shorteners" do
+	lambda {get :show, :key => 'doesntexist'}.should
+	  raise_error(ActionController::RoutingError)
+      end
     end
 
-    it "should find the right shortener" do
-      get :show, :id => @shortener
-      assigns(:shortener).should == @shortener
-    end
+    describe "success" do
 
-    it "should be a redirect" do
-      @request.host = @shortener.read_attribute(:domain)
-      get :show, :id => @shortener
-      response.should be_redirect
-    end
+      before(:each) do
+	@shortener = Factory(:shortener)
+      end
 
-    it "should redirect to the shortened url" do
-      @request.host = @shortener.read_attribute(:domain)
-      get :show, :id => @shortener
-      response.should redirect_to(@shortener.url)
+      it "should find the right shortener" do
+	get :show, :id => @shortener
+	assigns(:shortener).should == @shortener
+      end
+
+      it "should be a redirect" do
+	@request.host = @shortener.read_attribute(:domain)
+	get :show, :id => @shortener
+	response.should be_redirect
+      end
+
+      it "should redirect to the shortened url" do
+	@request.host = @shortener.read_attribute(:domain)
+	get :show, :id => @shortener
+	response.should redirect_to(@shortener.url)
+      end
     end
   end
 

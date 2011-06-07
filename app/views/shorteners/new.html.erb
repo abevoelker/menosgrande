@@ -1,10 +1,20 @@
+<% content_for :head do %>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#shortener_url").focus();
+    });
+  </script>
+
+<% end %>
+
 <div class="center" >
   <h1>Shorten a URL</h1>
 
   <%= form_for(@shortener) do |f| %>
     <%= render 'shared/error_messages' %>
     <div class="field">
-      <%= f.text_field :url %>
+      <%= f.text_field :url, :size => 50 %>
     </div>
     <div class="actions">
       <%= f.submit "Shorten" %>

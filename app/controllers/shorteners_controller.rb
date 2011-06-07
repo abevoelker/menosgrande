@@ -30,7 +30,6 @@ class ShortenersController < ApplicationController
   # GET /shorteners/new.xml
   def new
     @shortener = Shortener.new
-    @shortener.url = "http://areallylongurl.to/be/shortened"
 
     respond_to do |format|
       format.html # new.html.erb

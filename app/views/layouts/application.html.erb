@@ -4,6 +4,7 @@
     <title><%= title %></title>
     <%= csrf_meta_tag %>
     <%= render 'layouts/stylesheets' %>
+    <%= yield :head %>
   </head>
   <body>
     <div class="container">

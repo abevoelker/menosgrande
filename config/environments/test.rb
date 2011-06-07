@@ -36,4 +36,9 @@ UrlShorten::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.after_initialize do
+    Configuration.master_host = 'localhost'
+    Configuration.master_url = 'http://localhost:3000'
+  end
 end

@@ -1,18 +1,36 @@
+# encoding: utf-8
+
+class MasterHostConstraint
+  def matches?(request)
+    Configuration.master_host == request.host
+  end
+end
+
+class PoolHostConstraint
+  def matches?(request)
+    Configuration.master_host != request.host
+  end
+end
+
 UrlShorten::Application.routes.draw do
-  get "pages/faq"
 
-  get "pages/api"
+  constraints(MasterHostConstraint.new) do
+    resources :shorteners, :only => [:new, :create, :show]
 
-  get "pages/home"
+    match '/faq'  => 'pages#faq'
+    match '/api'  => 'pages#api'
+    match '/:key' => 'shorteners#show'
 
-  get "pages/contact"
+    root :to => "shorteners#new"
+  end
 
-  resources :shorteners
+  constraints(PoolHostConstraint.new) do
+    resources :shorteners, :only => [:show]
 
-  get "home/index"
+    match '/:key' => 'shorteners#show'
 
-  root :to => "shorteners#new"
-  match '/:key' => 'Shorteners#show'
+    root :to => redirect("#{Configuration.master_url}")
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

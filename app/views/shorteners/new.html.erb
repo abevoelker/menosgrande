@@ -1,9 +1,8 @@
-<h1>Shorten a URI</h1>
+<h1>Shorten a URL</h1>
 
 <%= form_for(@shortener) do |f| %>
   <%= render 'shared/error_messages' %>
   <div class="field">
-    <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
   <div class="actions">

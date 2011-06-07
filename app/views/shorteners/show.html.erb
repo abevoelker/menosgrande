@@ -1,11 +1,12 @@
-<p>
-  <b>Url:</b>
-  <%= @shortener.url %>
-</p>
 
-<p>
-  <b>Shortened Link:</b>
-  <%= link_to @shortener.shortlink, @shortener.shortlink %>
-  <%= clippy @shortener.shortlink %>
-</p>
+<div class="left-column">
+  <b>Original URL:</b><br />
+  <b>Shortened URL:</b>
+</div>
+
+<div class="right-column">
+  <%= link_to @shortener.url, @shortener.url %><br />
+  <%= link_to @shortener.shortlink, @shortener.shortlink %><%= clippy @shortener.shortlink %>
+</div>
+
 <%= link_to 'Back', root_path %>

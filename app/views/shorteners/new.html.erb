@@ -1,12 +1,13 @@
-<h1>Shorten a URL</h1>
+<div class="center" >
+  <h1>Shorten a URL</h1>
 
-<%= form_for(@shortener) do |f| %>
-  <%= render 'shared/error_messages' %>
-  <div class="field">
-    <%= f.text_field :url %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Shorten" %>
-  </div>
-<% end %>
-
+  <%= form_for(@shortener) do |f| %>
+    <%= render 'shared/error_messages' %>
+    <div class="field">
+      <%= f.text_field :url %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Shorten" %>
+    </div>
+  <% end %>
+</div>

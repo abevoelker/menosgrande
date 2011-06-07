@@ -182,3 +182,12 @@ div.field, div.actions {
   list-style: square;
 }
 
+/* Shortener new page */
+
+.center {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+

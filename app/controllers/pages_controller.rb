@@ -3,6 +3,7 @@ class PagesController < ApplicationController
   end
 
   def faq
+    @title = "FAQ"
   end
 
   def api

@@ -1,7 +1,7 @@
 module ApplicationHelper
 
   def title
-    base_title = "URL Shortener"
+    base_title = "menosgrande URL Shortener"
     if @title.nil?
       base_title
     else

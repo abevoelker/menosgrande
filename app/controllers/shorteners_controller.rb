@@ -20,7 +20,7 @@ class ShortenersController < ApplicationController
     if params[:key]
       @shortener = Shortener.find_by_key(params[:key]) || not_found
     else
-      @shortener = Shortener.find(params[:id]) || not_found
+      @shortener = Shortener.find(params[:id])
     end
 
     redirect_to @shortener.url, :status => 301 if is_redirect_domain?(request.host)
@@ -56,7 +56,7 @@ class ShortenersController < ApplicationController
 
   private
     def not_found
-      raise ActionController::RoutingError.new('Shortener Doesn\'t Exist')
+      raise ActiveRecord::RecordNotFound, "Shortener not found"
     end
 
     def is_redirect_domain?(domain)

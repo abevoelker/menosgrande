@@ -1,3 +1,5 @@
+$light-gray: #EEEEEE;
+
 .container {
   width: 710px;
 }
@@ -230,7 +232,7 @@ div.right-column {
 /* FAQ */
 
 /* Source: http://snipplr.com/view/10979/css-cross-browser-word-wrap */
-.wordwrap { 
+@mixin wordwrap {
    white-space: pre-wrap;      /* CSS3 */   
    white-space: -moz-pre-wrap; /* Firefox */    
    white-space: -pre-wrap;     /* Opera <7 */   
@@ -238,13 +240,22 @@ div.right-column {
    word-wrap: break-word;      /* IE */
 }
 
+@mixin light-gray-background {
+  background-color: $light-gray;
+}
+
 div.indent { margin-left: 20px; }
 
-.monospaced {
+@mixin monospaced-font {
   font-family: Consolas,Menlo,Monaco,Lucida Console,Liberation Mono,DejaVu Sans Mono,Bitstream Vera Sans Mono,Courier New,monospace,serif;
 }
 
-.light-gray-bg { background-color: #EEEEEE; }
+.codebox {
+  @include wordwrap;
+  @include monospaced-font;
+  @include light-gray-background;
+  background-color: $light-gray;
+}
 
 #faq-tableofc {
   font-size: 1.5em;

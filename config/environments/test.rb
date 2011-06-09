@@ -39,6 +39,6 @@ UrlShorten::Application.configure do
 
   config.after_initialize do
     Configuration.master_host = 'localhost'
-    Configuration.master_url = 'http://localhost:3000'
+    Configuration.master_url = 'http://localhost'
   end
 end

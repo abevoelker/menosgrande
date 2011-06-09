@@ -1,11 +1,13 @@
+# encoding: utf-8
+
 module ApplicationHelper
 
   def title
-    base_title = "menosgrande URL Shortener"
+    base_title = "menosgrande"
     if @title.nil?
       base_title
     else
-      "#{base_title} | #{@title}"
+      "#{@title} » #{base_title}"
     end
   end
 

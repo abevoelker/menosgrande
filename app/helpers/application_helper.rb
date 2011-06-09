@@ -3,7 +3,7 @@
 module ApplicationHelper
 
   def title
-    base_title = "menosgrande"
+    base_title = "menosgrande « efficient URL shortening"
     if @title.nil?
       base_title
     else

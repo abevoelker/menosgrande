@@ -44,7 +44,8 @@ class ShortenersController < ApplicationController
 
     respond_to do |format|
       if @shortener.save
-        format.html { redirect_to(@shortener, :notice => 'Shortener was successfully created.') }
+        flash[:success] = "URL successfully shortened!"
+        format.html { redirect_to(@shortener) }
         format.xml  { render :xml => @shortener, :status => :created, :location => @shortener }
       else
         format.html { render :action => "new" }

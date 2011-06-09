@@ -1,5 +1,23 @@
 $light-gray: #EEEEEE;
 
+// Sassified color version created by Abe Voelker
+// based on the original white version by Mark Otto:
+// http://markdotto.com/playground/3d-text/
+@mixin color-3D-text($color) {
+  text-shadow: 0 1px 0 $color / 1.25,
+               0 2px 0 $color / 1.268656716,
+	       0 3px 0 $color / 1.363636364,
+	       0 4px 0 $color / 1.378378378,
+	       0 5px 0 $color / 1.5,
+	       0 6px  1px  rgba(0,0,0,.1),
+	       0 0    5px  rgba(0,0,0,.1),
+	       0 1px  3px  rgba(0,0,0,.3),
+	       0 3px  5px  rgba(0,0,0,.2),
+	       0 5px  10px rgba(0,0,0,.25),
+	       0 10px 10px rgba(0,0,0,.2),
+	       0 20px 20px rgba(0,0,0,.15);
+}
+
 .container {
   width: 710px;
 }
@@ -133,24 +151,10 @@ footer nav {
 /* Home page */
 
 h1.mainpage {
-  color: #FFFFFF;
+  $header-color: #089ADD;
+  color: $header-color;
   font: bold 75px/1 "Helvetica Neue",Helvetica,Arial,sans-serif;
-}
-
-/* Example from http://markdotto.com/playground/3d-text/ */
-.three-D {
-  text-shadow: 0 1px 0 #ccc, 
-               0 2px 0 #c9c9c9,
-               0 3px 0 #bbb,
-               0 4px 0 #b9b9b9,
-               0 5px 0 #aaa,
-               0 6px 1px rgba(0,0,0,.1),
-               0 0 5px rgba(0,0,0,.1),
-               0 1px 3px rgba(0,0,0,.3),
-               0 3px 5px rgba(0,0,0,.2),
-               0 5px 10px rgba(0,0,0,.25),
-               0 10px 10px rgba(0,0,0,.2),
-               0 20px 20px rgba(0,0,0,.15);
+  @include color-3D-text($header-color); /* #07ABE0 */
 }
 
 /* User show page */

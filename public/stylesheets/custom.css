@@ -1,8 +1,29 @@
 .container {
   width: 710px; }
 
+html {
+  /* Needed so gradient doesn't cut off on short pages */
+  min-height: 100%; }
+
 body {
-  background: #cff; }
+  /* Gradient generated with http://www.colorzilla.com/gradient-editor/ */
+  background: #05abe0;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #05abe0 0%, #53cbf1 60%, #87e0fd 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #05abe0), color-stop(60%, #53cbf1), color-stop(100%, #87e0fd));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #05abe0 0%, #53cbf1 60%, #87e0fd 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #05abe0 0%, #53cbf1 60%, #87e0fd 100%);
+  /* Opera11.10+ */
+  background: -ms-linear-gradient(top, #05abe0 0%, #53cbf1 60%, #87e0fd 100%);
+  /* IE10+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#05abe0', endColorstr='#87e0fd',GradientType=0 );
+  /* IE6-9 */
+  background: linear-gradient(top, #05abe0 0%, #53cbf1 60%, #87e0fd 100%);
+  /* W3C */
+  background-repeat: no-repeat; }
 
 header {
   padding-top: 20px; }

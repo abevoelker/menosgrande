@@ -10,7 +10,7 @@ describe ShortenersController do
       get("#{Configuration.master_url}/shorteners/new").should route_to("shorteners#new")
     end
 
-        it "routes to #create" do
+    it "routes to #create" do
       post("#{Configuration.master_url}/shorteners").should route_to("shorteners#create")
     end
 

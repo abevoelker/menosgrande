@@ -14,6 +14,8 @@ gem 'idn', '~> 0.0.2', :git => 'git://github.com/mihu/idn'
 group :development do
   gem 'rspec-rails', '~> 2.6.1'
   gem 'annotate-models', '~> 1.0.4'
+  gem 'sass'
+  gem 'rb-inotify'
 end
 
 group :test do

@@ -3,7 +3,7 @@ require 'addressable/uri'
 class UriFormatValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     begin
-      uri = Addressable::URI.parse(value)
+      uri = Addressable::URI.heuristic_parse(value, {:scheme => "http"})
 
       if uri.scheme.nil?
 	record.errors[attribute] << (options[:message] || " does not have a URI scheme, " +

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110601022424) do
+ActiveRecord::Schema.define(:version => 20110601022425) do
 
   create_table "shorteners", :force => true do |t|
     t.string   "url"
@@ -20,6 +20,6 @@ ActiveRecord::Schema.define(:version => 20110601022424) do
     t.string   "domain"
   end
 
-  add_index "shorteners", ["key"], :name => "index_shorteners_on_key", :unique => true
+  add_index "shorteners", ["domain", "key"], :name => "index_shorteners_on_domain_and_key", :unique => true
 
 end

@@ -1,5 +1,5 @@
 # == Schema Information
-# Schema version: 20110601022424
+# Schema version: 20110601022425
 #
 # Table name: shorteners
 #

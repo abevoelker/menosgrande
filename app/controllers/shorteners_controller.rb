@@ -18,7 +18,8 @@ class ShortenersController < ApplicationController
   # GET /shorteners/1
   def show
     if params[:key]
-      @shortener = Shortener.find_by_key(params[:key]) || not_found
+      @shortener = Shortener.where(:domain => request.host,
+				   :key => params[:key]).first || not_found
     else
       @shortener = Shortener.find(params[:id])
     end

@@ -35,8 +35,8 @@ describe Shortener do
   it "should reject banned URI schemes" do
     uris = %w[javascript:alert("sometext"); file:///foo.txt]
     uris.push("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAA" + 
-	      "ACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4O" +
-	      "HwAAAABJRU5ErkJggg==")
+              "ACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4O" +
+              "HwAAAABJRU5ErkJggg==")
     uris.each do |uri|
       banned_uri_shortener = Shortener.new(@attr.merge(:url => uri))
       banned_uri_shortener.should_not be_valid

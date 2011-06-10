@@ -18,8 +18,9 @@ class ShortenersController < ApplicationController
   # GET /shorteners/1
   def show
     if params[:key]
-      @shortener = Shortener.where(:domain => request.host,
-				   :key => params[:key]).first || not_found
+      @shortener = Shortener.where(:domain => IDN::Idna.toUnicode(request.host),
+                                   :key => params[:key]).first ||
+                   not_found
     else
       @shortener = Shortener.find(params[:id])
     end

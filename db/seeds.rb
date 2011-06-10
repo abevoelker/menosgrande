@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Mayor.create(:name => 'Daley', :city => cities.first)
+
+# Set the domains and their counters
+domains = ['127.0.0.1', '0.0.0.0']
+REDIS.del('domains') #Silly way to empty a set
+domains.each do |domain|
+  REDIS.sadd('domains', domain)
+  REDIS.set(domain, 500)
+end
+

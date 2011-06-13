@@ -7,6 +7,7 @@ class PagesController < ApplicationController
   end
 
   def api
+    @title = "API"
   end
 
 end

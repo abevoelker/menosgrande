@@ -25,8 +25,13 @@ end
 # Set the allowed Unicode code points
 code_points = []
 code_points = JSON.parse(File.open(VALID_CODE_POINTS_FILE, &:readline).chomp)
+# Seed the PRNG so that array is shuffled into same order each time this runs
+Kernel.srand(0xABE)
+code_points.shuffle!
+Kernel.srand # Reseed PRNG so that it is no longer predictable
 code_points.each do |cp|
   char = [cp].pack("U*").mb_chars
   !URI_RESERVED.include?(char) && !PARANOID_RESERVED.include?(char) && 
     REDIS.rpush('code_points', char)
 end
+

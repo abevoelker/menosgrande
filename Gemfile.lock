@@ -60,6 +60,7 @@ GEM
       rack (>= 1.0.0)
     rack-test (0.5.7)
       rack (>= 1.0)
+    radix (2.0.0)
     rails (3.0.7)
       actionmailer (= 3.0.7)
       actionpack (= 3.0.7)
@@ -109,6 +110,7 @@ DEPENDENCIES
   annotate-models (~> 1.0.4)
   factory_girl_rails (~> 1.0.1)
   idn (~> 0.0.2)!
+  radix (~> 2.0.0)
   rails (= 3.0.7)
   rake (= 0.8.7)
   rb-inotify

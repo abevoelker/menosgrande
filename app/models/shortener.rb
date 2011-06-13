@@ -13,6 +13,7 @@
 
 require 'redis'
 require 'addressable/uri'
+require 'radix'
 
 class Shortener < ActiveRecord::Base
   attr_accessible :url
@@ -45,6 +46,12 @@ class Shortener < ActiveRecord::Base
     end
 
     def get_next_key(domain)
-      [REDIS.incr(domain).to_i].pack("U*").mb_chars
+      keynum = [REDIS.incr(domain).to_i]
+      keynum.b(107401).to_a
+      # Map the numbers into the valid Unicode code points array
+      keynum.map! do |num|
+        REDIS.lindex('code_points', num)
+      end
+      keynum.join
     end
 end

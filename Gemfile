@@ -10,6 +10,7 @@ gem 'sqlite3'
 gem "redis", "~> 2.2.0"
 gem "addressable", "~> 2.2.6"
 gem 'idn', '~> 0.0.2', :git => 'git://github.com/mihu/idn'
+gem "radix", "~> 2.0.0"
 
 group :development do
   gem 'rspec-rails', '~> 2.6.1'

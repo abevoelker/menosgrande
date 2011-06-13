@@ -46,12 +46,12 @@ class Shortener < ActiveRecord::Base
     end
 
     def get_next_key(domain)
-      keynum = [REDIS.incr(domain).to_i]
-      keynum.b(107401).to_a
+      keynum = REDIS.incr(domain).to_i
+      keynums = keynum.b(107401).to_a
       # Map the numbers into the valid Unicode code points array
-      keynum.map! do |num|
+      keynums.map! do |num|
         REDIS.lindex('code_points', num)
       end
-      keynum.join
+      keynums.join
     end
 end

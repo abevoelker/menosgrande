@@ -1,5 +1,41 @@
 <% content_for :head do %>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+  <script src="/javascripts/jquery-ui-1.8.13.custom.min.js"></script>
+  <link rel="stylesheet" href="/stylesheets/dot-luv/jquery-ui-1.8.13.custom.css" />
+
+  <style type="text/css">
+    ul#icons {margin: 0; padding: 0;}
+    ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+    ul#icons span.ui-icon {float: left; margin: 0 4px;}
+    a:hover {text-decoration:none;}
+    .beta-hack {display:inline;}
+    .beta-padding-hack {padding-top: 1.5em;}
+    span#beta {text-decoration: none; vertical-align: top; font-weight: bold;}
+  </style>
+
+  <script type="text/javascript">
+			$(function(){
+	
+
+				// Dialog
+				$('#dialog-message').dialog({
+					autoOpen: false,
+					width: 500,
+					buttons: {
+						"OK": function() { 
+							$(this).dialog("close"); 
+						} 
+					}
+				});
+				
+				// Dialog Link
+				$('#dialog_link').click(function(){
+          $('#dialog-message').dialog('open');
+					return false;
+				});
+				
+			});
+		</script>
   <script>
     $(document).ready(function(){
       $("#shortener_url").focus();
@@ -8,12 +44,25 @@
 
 <% end %>
 
-<div class="center" >
-  <h1 class="mainpage">menosgrande</h1>
 
+<div id="dialog-message" title="Beta" style="display: none;">
+	<p>
+    <span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 50px 0;"></span>
+    <b>menosgrande is <a href="http://en.wikipedia.org/wiki/Software_release_life_cycle#Beta">beta software</a>.</b>
+  </p>
+  <p style="text-indent: 0px;">
+    Although we will strive to keep your link permanent and maintain stable access to resources, this cannot be guaranteed. Please take this into consideration as you use the service.
+  </p>
+  <p>
+    On the upside, there are lots of new features planned. Stay tuned!
+	</p>
+</div>
+
+<div class="center" >
+  <h1 class="mainpage beta-hack">menosgrande</h1><h1 class="beta-hack"><a href="#" id="dialog_link"><span id="beta"><sup>β</sup></span></a></h1>
   <%= form_for(@shortener) do |f| %>
     <%= render 'shared/error_messages' %>
-    <div class="field">
+    <div class="field beta-padding-hack">
       <%= f.text_field :url, :size => 50 %>
     </div>
     <div class="actions">
@@ -21,3 +70,4 @@
     </div>
   <% end %>
 </div>
+

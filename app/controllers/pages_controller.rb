@@ -10,6 +10,10 @@ class PagesController < ApplicationController
     @title = "API"
   end
 
+  def privacy
+    @title = "Privacy Policy"
+  end
+
   def tos
     @title = "Terms of Service"
   end

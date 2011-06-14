@@ -17,10 +17,11 @@ UrlShorten::Application.routes.draw do
   constraints(MasterHostConstraint.new) do
     resources :shorteners, :only => [:new, :create, :show]
 
-    match '/faq'  => 'pages#faq'
-    match '/api'  => 'pages#api'
-    match '/tos'  => 'pages#tos'
-    match '/:key' => 'shorteners#show'
+    match '/faq'     => 'pages#faq'
+    match '/api'     => 'pages#api'
+    match '/tos'     => 'pages#tos'
+    match '/privacy' => 'pages#privacy'
+    match '/:key'    => 'shorteners#show'
 
     root :to => "shorteners#new"
   end

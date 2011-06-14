@@ -10,4 +10,8 @@ class PagesController < ApplicationController
     @title = "API"
   end
 
+  def tos
+    @title = "Terms of Service"
+  end
+
 end

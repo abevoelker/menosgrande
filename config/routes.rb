@@ -19,6 +19,7 @@ UrlShorten::Application.routes.draw do
 
     match '/faq'  => 'pages#faq'
     match '/api'  => 'pages#api'
+    match '/tos'  => 'pages#tos'
     match '/:key' => 'shorteners#show'
 
     root :to => "shorteners#new"

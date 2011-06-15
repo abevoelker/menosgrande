@@ -25,6 +25,9 @@ group :test do
   gem 'factory_girl_rails', '~> 1.0.1'
 end
 
+group :production do
+  gem "rack-no-www", "~> 0.0.1"
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'

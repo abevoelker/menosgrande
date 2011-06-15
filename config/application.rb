@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
 
+require 'rack/no-www'
+
 module UrlShorten
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -38,5 +40,10 @@ module UrlShorten
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Rewrite www (see http://no-www.org)
+    if Rails.env.production?
+      config.middleware.insert_before ActionDispatch::Static, Rack::NoWWW
+    end
   end
 end

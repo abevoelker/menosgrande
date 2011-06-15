@@ -50,6 +50,8 @@ UrlShorten::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
 
+  config.middleware.use "WwwMiddleware"
+
   config.after_initialize do
     Configuration.master_host = 'menosgrande.org'
     Configuration.master_url = 'http://menosgrande.org'

@@ -38,5 +38,8 @@ module UrlShorten
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # Strip off the www.
+    config.autoload_paths += %W( #{ config.root }/lib/middleware )
   end
 end

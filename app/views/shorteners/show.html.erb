@@ -5,7 +5,7 @@
 </div>
 
 <div class="right-column">
-  <%= link_to @shortener.url, @shortener.url %><br />
+  <%= link_to trimURL(@shortener.url), @shortener.url %><br />
   <%= link_to @shortener.shortlink, @shortener.shortlink %><%= clippy @shortener.shortlink %>
 </div>
 

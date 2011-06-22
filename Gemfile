@@ -6,7 +6,7 @@ gem 'rails', '3.0.7'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem "pg", "~> 0.11.0"
 gem "redis", "~> 2.2.0"
 gem "addressable", "~> 2.2.6"
 gem 'idn', '~> 0.0.2', :git => 'git://github.com/mihu/idn'

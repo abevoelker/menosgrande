@@ -1,8 +1,12 @@
+/* This custom.css is based on the tutorial sample from Michael Hartl's */
+/* Rails tutorial at http://ruby.railstutorial.org */
+
 $light-gray: #EEEEEE;
 
-// Sassified color version created by Abe Voelker
-// based on the original white version by Mark Otto:
-// http://markdotto.com/playground/3d-text/
+/* Sassified color version created by Abe Voelker
+ * based on the original white version by Mark Otto:
+ * http://markdotto.com/playground/3d-text/
+ */
 @mixin color-3D-text($color) {
   text-shadow: 0 1px 0 $color / 1.25,
                0 2px 0 $color / 1.268656716,

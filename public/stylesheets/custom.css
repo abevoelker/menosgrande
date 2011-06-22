@@ -1,3 +1,9 @@
+/* This custom.css is based on the tutorial sample from Michael Hartl's */
+/* Rails tutorial at http://ruby.railstutorial.org */
+/* Sassified color version created by Abe Voelker
+ * based on the original white version by Mark Otto:
+ * http://markdotto.com/playground/3d-text/
+ */
 .container {
   width: 710px; }
 

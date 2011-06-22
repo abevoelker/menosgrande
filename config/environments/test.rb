@@ -40,5 +40,6 @@ UrlShorten::Application.configure do
   config.after_initialize do
     Configuration.master_host = 'localhost'
     Configuration.master_url = 'http://localhost'
+    Configuration.num_code_points = REDIS.llen('code_points')
   end
 end

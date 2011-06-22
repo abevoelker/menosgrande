@@ -53,5 +53,6 @@ UrlShorten::Application.configure do
   config.after_initialize do
     Configuration.master_host = 'menosgrande.org'
     Configuration.master_url = 'http://menosgrande.org'
+    Configuration.num_code_points = REDIS.llen('code_points')
   end
 end

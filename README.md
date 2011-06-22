@@ -1,8 +1,8 @@
 What is menosgrande?
 --------------------
 
-menosgrande is a URL shortener. It uses some tricks such as IDN domains and 
-Unicode paths to exploit the way that
+[menosgrande](http://menosgrande.org) is a URL shortener. It uses some tricks
+such as IDN domains and Unicode paths to exploit the way that
 [Twitter counts characters](http://dev.twitter.com/pages/counting_characters)
 (spoiler: by normalized Unicode code points) in order to make extremely short
 URLs.

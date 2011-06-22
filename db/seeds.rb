@@ -7,13 +7,14 @@ VALID_CODE_POINTS_FILE = 'db/valid_code_points.json'
 URI_RESERVED  = ":/?#[]@!$&'()*+,;="
 PARANOID_RESERVED = "\\%."
 
-REDIS.flushdb # Blow it all away
+REDIS.flushdb # Reset Redis DB
 
 # Set the domains and their counters
 if Rails.env == 'production' then
   domains = ['æ.is']
 else
-  domains = ['127.0.0.1', '0.0.0.0']
+  # Set these in /etc/hosts to point to 127.0.0.1
+  domains = ['æ.local']
 end
 domains.each do |domain|
   REDIS.sadd('domains', domain)

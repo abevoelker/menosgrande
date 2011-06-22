@@ -51,11 +51,4 @@ describe Shortener do
     end
   end
 
-  # This may not be a valid prerequisite in a later version
-  it "should reject duplicate urls" do
-    Shortener.create!(@attr)
-    shortener_with_duplicate_url = Shortener.new(@attr)
-    shortener_with_duplicate_url.should_not be_valid
-  end
-
 end

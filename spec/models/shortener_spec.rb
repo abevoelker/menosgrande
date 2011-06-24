@@ -51,4 +51,10 @@ describe Shortener do
     end
   end
 
+  it "should normalize URIs" do
+    normalized_uri_shortener = Shortener.new(@attr.merge(:url => "http://ABEVOELKER.com"))
+    normalized_uri_shortener.valid? # Force validations to run
+    normalized_uri_shortener[:url].should == "http://abevoelker.com/"
+  end
+
 end

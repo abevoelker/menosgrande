@@ -14,7 +14,7 @@ gem "radix", "~> 2.0.0"
 
 group :development do
   gem 'rspec-rails', '~> 2.6.1'
-  gem 'annotate-models', '~> 1.0.4'
+  gem 'annotate'
   gem 'sass'
   gem 'rb-inotify'
 end
